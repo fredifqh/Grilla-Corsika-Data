@@ -51,42 +51,70 @@ void detector::results(int ndetect, int L)
 			limit_y = int(PosTank_y/100) + 1;
 		else 
 			limit_y = int(PosTank_y/100) - 1;
-
+		
 		std::cout << PosTank_x << "  " << PosTank_y << std::endl;
 		std::cout << limit_x << "  " << limit_y << std::endl;
 		*/
-		PosTank_x = 22;
-		PosTank_y = 28;
+		PosTank_x = 101;
+		PosTank_y = 101;
 		
-		limit_x = 1;
-		limit_y = 1;
-
-		//if (PosTank_x > 0 && PosTank_y > 0)
-		//{		
-			if (PosTank_x + 3 >= (limit_x*100 - 100) && PosTank_x + 3 <= limit_x*100 && PosTank_y + 3 >= (limit_y*100 - 100) && PosTank_y + 3 <= limit_y*100)
+		limit_x = 2;
+		limit_y = 2;
+		
+		if (PosTank_x > 0 && PosTank_y > 0 && PosTank_x - 3 > 0 && PosTank_y - 3 > 0)
+		{
+			if (PosTank_x + 3 <= limit_x*100 && PosTank_x - 3 >= limit_x*100 - 100 && PosTank_y + 3 <= limit_y*100 && PosTank_y - 3 >= limit_y*100 - 100)
 			{
 				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
 			}
-			else if (PosTank_x + 3 >= (limit_x*100 - 100) && PosTank_x + 3 > limit_x*100 && PosTank_y + 3 >= (limit_y*100 - 100) && PosTank_y + 3 <= limit_y*100)
+			else if (PosTank_x + 3 > limit_x*100 && PosTank_x - 3 >= limit_x*100 - 100 && PosTank_y + 3 <= limit_y*100 && PosTank_y - 3 >= limit_y*100 - 100)
 			{
 				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
 				detector::detect_info(limit_x + 1, limit_y, PosTank_x, PosTank_y, f);
 			}
-			else if (PosTank_x + 3 >= (limit_x*100 - 100) && PosTank_x + 3 <= limit_x*100 && PosTank_y + 3 >= (limit_y*100 - 100) && PosTank_y + 3 > limit_y*100)
+			else if (PosTank_x + 3 <= limit_x*100 && PosTank_x - 3 < limit_x*100 - 100 && PosTank_y + 3 <= limit_y*100 && PosTank_y - 3 >= limit_y*100 - 100)
+			{
+				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x -1, limit_y, PosTank_x, PosTank_y, f);
+			}
+			else if (PosTank_x + 3 <= limit_x*100 && PosTank_x - 3 >= limit_x*100 - 100 && PosTank_y + 3 > limit_y*100 && PosTank_y - 3 >= limit_y*100 - 100)
 			{
 				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
 				detector::detect_info(limit_x, limit_y + 1, PosTank_x, PosTank_y, f);
+			} 
+			else if (PosTank_x + 3 <= limit_x*100 && PosTank_x - 3 >= limit_x*100 - 100 && PosTank_y + 3 <= limit_y*100 && PosTank_y - 3 < limit_y*100 - 100)
+			{
+				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x, limit_y - 1, PosTank_x, PosTank_y, f);
 			}
-			else if (PosTank_x + 3 >= (limit_x*100 - 100) && PosTank_x + 3 > limit_x*100 && PosTank_y + 3 >= (limit_y*100 - 100) && PosTank_y + 3 > limit_y*100)
+			else if (PosTank_x + 3 > limit_x*100 && PosTank_y + 3 > limit_y*100)
 			{
 				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
 				detector::detect_info(limit_x + 1, limit_y, PosTank_x, PosTank_y, f);
 				detector::detect_info(limit_x, limit_y + 1, PosTank_x, PosTank_y, f);
 				detector::detect_info(limit_x + 1, limit_y + 1, PosTank_x, PosTank_y, f);
-			} 
-		//}
-		//else if (PosTank_x < 0 && PosTank_y > 0)
-		//{}
-
+			}
+			else if (PosTank_x - 3 < (limit_x*100 - 100) && PosTank_y + 3 > limit_y*100)
+			{
+				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x, limit_y - 1, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y + 1, PosTank_x, PosTank_y, f);
+			}
+			else if (PosTank_x - 3 < limit_x*100 && PosTank_y - 3 < limit_y*100)
+			{
+				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x, limit_y - 1, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y - 1, PosTank_x, PosTank_y, f);
+			}
+			else if (PosTank_x - 3 > limit_x*100 && PosTank_y - 3 < limit_y*100 - 100)
+			{
+				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x, limit_y - 1, PosTank_x, PosTank_y, f);
+				detector::detect_info(limit_x - 1, limit_y - 1, PosTank_x, PosTank_y, f);
+			}
+		}
 	}
 }
