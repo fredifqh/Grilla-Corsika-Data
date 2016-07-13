@@ -61,8 +61,8 @@ void detector::results(int ndetect, int L)
 		limit_x = 2;
 		limit_y = 2;
 		
-		if (PosTank_x > 0 && PosTank_y > 0 && PosTank_x - 3 > 0 && PosTank_y - 3 > 0)
-		{
+		if (PosTank_x > 0 && PosTank_y > 0 && PosTank_x - 3 > 0 && PosTank_y - 3 > 0) // Primer cuadrante
+		{ 
 			if (PosTank_x + 3 <= limit_x*100 && PosTank_x - 3 >= limit_x*100 - 100 && PosTank_y + 3 <= limit_y*100 && PosTank_y - 3 >= limit_y*100 - 100)
 			{
 				detector::detect_info(limit_x, limit_y, PosTank_x, PosTank_y, f);
@@ -116,5 +116,18 @@ void detector::results(int ndetect, int L)
 				detector::detect_info(limit_x - 1, limit_y - 1, PosTank_x, PosTank_y, f);
 			}
 		}
+		else if (PosTank_x < 0 && PosTank_y > 0 && PosTank_x - 3 < 0 && PosTank_y - 3 > 0) // Segundo cuadrante
+		{
+			/* code */
+		}
+		else if (PosTank_x < 0 && PosTank_y < 0 && PosTank_x - 3 < 0 && PosTank_y - 3 < 0) // Tercer cuadrante
+		{
+			/* code */
+		}
+		else if (PosTank_x > 0 && PosTank_y < 0 && PosTank_x - 3 < 0 && PosTank_y - 3 > 0) // Cuarto cuadrante
+		{
+			/* code */
+		}
+	
 	}
 }
